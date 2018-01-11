@@ -20,6 +20,14 @@ RETURNS VOID
 AS 'sphinx', 'pg_sphinx_replace'
 LANGUAGE C IMMUTABLE;
 
+CREATE OR REPLACE FUNCTION sphinx_update(
+  /*index*/     varchar,
+  /*id*/        int,
+  /*data*/      varchar[])
+RETURNS VOID
+AS 'sphinx', 'pg_sphinx_update'
+LANGUAGE C IMMUTABLE;
+
 CREATE OR REPLACE FUNCTION sphinx_delete(
   /*index*/     varchar,
   /*id*/        int)
