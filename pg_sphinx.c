@@ -24,7 +24,7 @@ Datum pg_sphinx_select(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(pg_sphinx_replace);
 Datum pg_sphinx_replace(PG_FUNCTION_ARGS);
 
-PG_FUNCTION_INFO_V1(pg_sphinx_replace);
+PG_FUNCTION_INFO_V1(pg_sphinx_update);
 Datum pg_sphinx_update(PG_FUNCTION_ARGS);
 
 PG_FUNCTION_INFO_V1(pg_sphinx_delete);
