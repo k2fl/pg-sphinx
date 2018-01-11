@@ -193,7 +193,7 @@ void sphinx_replace(sphinx_config *config,
 }
 
 void sphinx_update(sphinx_config *config,
-                    const PStirng *index,
+                    const PString *index,
                     int id,
                     const Dict *data,
                     char **error)

@@ -71,6 +71,18 @@
   Updates document with specified id. Data array must have following format:
   ARRAY['key1', 'value2', ...]
 
+*** Update data for disk index
+
+  #+BEGIN_SRC sql
+  sphinx_update(
+      /*index*/     varchar,
+      /*id*/        int,
+      /*data*/      varchar[])
+  #+END_SRC
+
+  Updates document with specified id in disk index. Data array must have following format:
+  ARRAY['key1', 'value2', ...]
+
 *** Delete data
 
   #+BEGIN_SRC sql
