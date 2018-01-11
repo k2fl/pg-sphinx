@@ -40,6 +40,12 @@ void sphinx_replace(sphinx_config *config,
                     const Dict *data,
                     char **error);
 
+void sphinx_update(sphinx_config *config,
+                    const PStirng *index,
+                    int id,
+                    const Dict *data,
+                    char **error);
+
 void sphinx_delete(sphinx_config *config,
                    const PString *index,
                    int id,
