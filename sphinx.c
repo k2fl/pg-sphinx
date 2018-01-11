@@ -214,7 +214,7 @@ void sphinx_update(sphinx_config *config,
       string_builder_append(sb, "`");
       string_builder_append_pstr(sb, &data->names[i]);
       string_builder_append(sb, "` = ");
-      string_builder_append_sql_string(sb, &data->values[i]);
+      string_builder_append_int(sb, pstring_to_integer(&data->values[i]));
       if (data->len < i) {
         string_builder_append(sb, ", ");  
       }
