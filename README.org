@@ -82,6 +82,7 @@
 
   Updates document with specified id in disk index. Data array must have following format:
   ARRAY['key1', 'value2', ...]
+  Values may be only integer type.
 
 *** Delete data
 
