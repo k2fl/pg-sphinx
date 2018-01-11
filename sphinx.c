@@ -97,7 +97,7 @@ sphinx_context sphinx_select(sphinx_config *config,
 
   if (PSTR_NOT_EMPTY(order))
     {
-      string_builder_append(sb, " ORDER BY ");
+      string_builder_append(sb, ", ");
       string_builder_append_pstr(sb, order);
     }
   string_builder_append(sb, " LIMIT ");
@@ -208,21 +208,19 @@ void sphinx_update(sphinx_config *config,
   string_builder_append(sb, "UPDATE ");
   string_builder_append(sb, config->prefix);
   string_builder_append_pstr(sb, index);
-  string_builder_append(sb, " (id");
+  string_builder_append(sb, " SET ");
   for (i = 0; i < data->len; ++i)
     {
-      string_builder_append(sb, ", `");
-      string_builder_append_pstr(sb, &data->names[i]);
       string_builder_append(sb, "`");
-    }
-  string_builder_append(sb, ") VALUES (");
-  string_builder_append_int(sb, id);
-  for (i = 0; i < data->len; ++i)
-    {
-      string_builder_append(sb, ", ");
+      string_builder_append_pstr(sb, &data->names[i]);
+      string_builder_append(sb, "` = ");
       string_builder_append_sql_string(sb, &data->values[i]);
+      if (data->len < i) {
+        string_builder_append(sb, ", ");  
+      }
     }
-  string_builder_append(sb, ")");
+  string_builder_append(sb, " WHERE id = ");
+  string_builder_append_int(sb, id);
 
   if (mysql_query(connection, sb->str))
     REPORT(error, "Can't execute update query: ", sb->str, "; ", mysql_error(connection));
